@@ -1,42 +1,64 @@
 <title>Onestop Line</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 :root {
   --bg: #FFFFFF;
-  --band: #F4F5F7;
-  --ink: #1C2330;
-  --muted: #5A6372;
-  --line: #D5D9E0;
-  --accent: #1F3A5F;
+  --soft: #FFF6EF;
+  --band: #F7F5F3;
+  --ink: #1D1A17;
+  --muted: #5E5750;
+  --line: #E8E2DC;
+  --accent: #B8460B;
+  --accent-hover: #9C3B09;
+  --accent-tint: #FCE9DC;
   --accent-on: #FFFFFF;
-  --error: #A3261B;
-  --av-bg: #DCE3EC;
-  --font: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --error: #B42318;
+  --av-bg: #F6DCCB;
+  --foot-bg: #1F1A16;
+  --foot-ink: #D9D2CB;
+  --foot-muted: #9C938A;
+  --card-shadow: 0 1px 2px rgba(29, 26, 23, .05), 0 8px 24px -12px rgba(29, 26, 23, .18);
+  --font: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #14181F;
-    --band: #1B2029;
-    --ink: #E6E9EE;
-    --muted: #A2AAB6;
-    --line: #333B47;
-    --accent: #8FB0DA;
-    --accent-on: #0F1B2D;
-    --error: #F2A39B;
-    --av-bg: #2A3445;
+    --bg: #151210;
+    --soft: #1E1915;
+    --band: #1A1613;
+    --ink: #F2EEEA;
+    --muted: #B3AAA1;
+    --line: #322B25;
+    --accent: #F08A4B;
+    --accent-hover: #F5A06B;
+    --accent-tint: #3A2416;
+    --accent-on: #1D1208;
+    --error: #F4A09A;
+    --av-bg: #3A2A1F;
+    --foot-bg: #0E0C0A;
+    --foot-ink: #D9D2CB;
+    --foot-muted: #8E857C;
+    --card-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 28px -14px rgba(0, 0, 0, .7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #14181F;
-  --band: #1B2029;
-  --ink: #E6E9EE;
-  --muted: #A2AAB6;
-  --line: #333B47;
-  --accent: #8FB0DA;
-  --accent-on: #0F1B2D;
-  --error: #F2A39B;
-  --av-bg: #2A3445;
+  --bg: #151210;
+  --soft: #1E1915;
+  --band: #1A1613;
+  --ink: #F2EEEA;
+  --muted: #B3AAA1;
+  --line: #322B25;
+  --accent: #F08A4B;
+  --accent-hover: #F5A06B;
+  --accent-tint: #3A2416;
+  --accent-on: #1D1208;
+  --error: #F4A09A;
+  --av-bg: #3A2A1F;
+  --foot-bg: #0E0C0A;
+  --foot-ink: #D9D2CB;
+  --foot-muted: #8E857C;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 28px -14px rgba(0, 0, 0, .7);
   color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -47,181 +69,383 @@ body {
   color: var(--ink);
   font-family: var(--font);
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.55;
   -webkit-text-size-adjust: 100%;
 }
-h1, h2, p, ul { margin: 0; }
-.wrap { max-width: 520px; margin: 0 auto; padding: 0 16px; }
-header { border-bottom: 1px solid var(--line); background: var(--band); }
-header .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 52px; gap: 12px; }
-.wordmark { font-weight: 700; font-size: 1.0625rem; letter-spacing: .01em; color: var(--accent); }
-main .wrap { padding-top: 24px; padding-bottom: 32px; display: flex; flex-direction: column; gap: 22px; }
-h1 { font-size: 1.375rem; font-weight: 700; line-height: 1.25; }
-h2 { font-size: 1rem; font-weight: 700; }
-.muted { color: var(--muted); }
-.small { font-size: .9375rem; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-label { display: block; font-weight: 600; margin-bottom: 6px; }
-input[type="email"] {
-  width: 100%; min-height: 44px; padding: 8px 10px;
-  font: inherit; color: var(--ink); background: var(--bg);
-  border: 1px solid var(--line); border-radius: 4px;
-}
-input[type="email"]:focus-visible { border-color: var(--accent); }
-input[aria-invalid="true"] { border-color: var(--error); }
-.error { color: var(--error); font-size: .9375rem; margin-top: 6px; min-height: 1.4em; }
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding-left: 1.15em; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 720px) { .wrap { padding: 0 28px; } }
+
+/* Top strip + header */
+.strip { background: var(--accent); color: var(--accent-on); font-size: .875rem; font-weight: 600; text-align: center; padding: 7px 16px; }
+header.site { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 64px; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.125rem; letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
+.mark { width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: var(--accent-on); display: grid; place-items: center; }
+.nav { display: none; gap: 26px; font-weight: 500; color: var(--muted); font-size: .9375rem; }
+.nav a { color: inherit; text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+@media (min-width: 860px) { .nav { display: flex; } }
+.head-right { display: flex; align-items: center; gap: 12px; }
+.signed { font-size: .875rem; color: var(--muted); }
+.brand, .btn { white-space: nowrap; }
+@media (max-width: 600px) { #signed-short { display: none; } }
+
+/* Buttons */
 .btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-height: 44px; padding: 0 18px; border-radius: 4px;
-  font: inherit; font-weight: 600; text-decoration: none; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 46px; padding: 0 22px; border-radius: 999px;
+  font: inherit; font-weight: 700; font-size: .9375rem; text-decoration: none; cursor: pointer;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
 }
-.btn-primary { background: var(--accent); color: var(--accent-on); border: 1px solid var(--accent); }
-.btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
-.linkbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); text-decoration: underline; cursor: pointer; }
+.btn-primary { background: var(--accent); color: var(--accent-on); border: 1.5px solid var(--accent); }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.btn-sm { min-height: 38px; padding: 0 16px; font-size: .875rem; }
+.linkbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+/* Hero */
+.hero { background: linear-gradient(var(--soft), var(--bg)); }
+.hero .wrap { display: grid; gap: 36px; padding-top: 44px; padding-bottom: 56px; align-items: center; }
+@media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.15fr .85fr; gap: 56px; padding-top: 72px; padding-bottom: 80px; } }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: .8125rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.hero h1 { margin-top: 14px; font-size: clamp(2.1rem, 6.4vw, 3.5rem); line-height: 1.06; font-weight: 800; letter-spacing: -.025em; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.lede { margin-top: 18px; font-size: 1.125rem; color: var(--muted); max-width: 34em; }
+.hero-actions { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+.stats { margin-top: 36px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 520px; }
+.stat b { display: block; font-size: 1.75rem; font-weight: 800; letter-spacing: -.02em; color: var(--ink); line-height: 1.1; }
+.stat span { font-size: .8125rem; color: var(--muted); }
+
+/* Cards */
+.card { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--card-shadow); }
+.signin-card { padding: 26px 22px; display: flex; flex-direction: column; gap: 16px; }
+@media (min-width: 520px) { .signin-card { padding: 30px; } }
 .who { display: flex; align-items: center; gap: 14px; }
-.who svg { width: 80px; height: 80px; border-radius: 50%; flex: none; }
-.signed { font-size: .9375rem; color: var(--muted); }
-fieldset { border: 0; margin: 0; padding: 0; }
-legend { font-weight: 700; padding: 0; margin-bottom: 8px; }
-.seg { display: flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-.seg label { flex: 1; margin: 0; font-weight: 600; text-align: center; padding: 9px 8px; cursor: pointer; border-right: 1px solid var(--line); }
-.seg label:last-child { border-right: 0; }
+.who svg { flex: none; border-radius: 50%; }
+.who h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -.01em; }
+label { display: block; font-weight: 600; font-size: .9375rem; margin-bottom: 6px; }
+input[type="email"] {
+  width: 100%; min-height: 48px; padding: 10px 14px;
+  font: inherit; color: var(--ink); background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: 12px;
+}
+input[type="email"]:focus-visible { border-color: var(--accent); outline-offset: 1px; }
+input[aria-invalid="true"] { border-color: var(--error); }
+.error { color: var(--error); font-size: .875rem; margin-top: 6px; min-height: 1.3em; }
+.signin-card form .btn { width: 100%; }
+.fine { font-size: .8125rem; color: var(--muted); }
+
+/* Sections */
+section.band { padding: 56px 0; }
+section.band.alt { background: var(--band); }
+.sec-head { max-width: 640px; margin-bottom: 28px; }
+.sec-head h2 { font-size: clamp(1.6rem, 4.4vw, 2.25rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.15; margin-top: 10px; }
+.sec-head p { margin-top: 12px; color: var(--muted); font-size: 1.0625rem; }
+.grid4 { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid4 { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .grid4 { grid-template-columns: repeat(4, 1fr); } }
+.feature { padding: 22px; }
+.ficon { width: 44px; height: 44px; border-radius: 12px; background: var(--accent-tint); color: var(--accent); display: grid; place-items: center; }
+.feature h3 { margin-top: 14px; font-size: 1.0625rem; font-weight: 700; }
+.feature p { margin-top: 6px; color: var(--muted); font-size: .9375rem; }
+
+/* Call demo */
+.split { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; gap: 56px; } }
+.phone { max-width: 340px; margin: 0 auto; width: 100%; padding: 14px; border-radius: 34px; background: var(--ink); }
+.screen { background: var(--bg); border-radius: 24px; padding: 18px 14px 20px; display: flex; flex-direction: column; gap: 10px; }
+.callhead { display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.callhead b { display: block; font-size: .9375rem; }
+.callhead span { font-size: .75rem; color: var(--muted); }
+.msg { max-width: 86%; padding: 9px 13px; border-radius: 16px; font-size: .875rem; line-height: 1.45; }
+.msg.me { align-self: flex-end; background: var(--accent); color: var(--accent-on); border-bottom-right-radius: 5px; }
+.msg.terry { align-self: flex-start; background: var(--band); border: 1px solid var(--line); border-bottom-left-radius: 5px; }
+.checks { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
+.checks li { display: flex; gap: 10px; align-items: flex-start; }
+.checks svg { flex: none; margin-top: 3px; color: var(--accent); }
+
+/* Coming soon + trust */
+.soon { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 24px; background: var(--accent-tint); border: 1px solid transparent; }
+.soon h3 { font-size: 1.125rem; font-weight: 800; }
+.soon p { color: var(--muted); margin-top: 4px; }
+.tag { display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); border: 1.5px solid var(--accent); border-radius: 999px; padding: 3px 10px; }
+.trust { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: center; color: var(--muted); font-weight: 700; font-size: .875rem; letter-spacing: .02em; padding-top: 28px; }
+.trust span { display: inline-flex; align-items: center; gap: 8px; }
+
+/* Signed-in */
+.inside .wrap { padding-top: 36px; padding-bottom: 56px; display: grid; gap: 22px; }
+@media (min-width: 900px) { .inside .wrap { grid-template-columns: 1.1fr .9fr; align-items: start; } }
+.panel { padding: 24px 22px; display: flex; flex-direction: column; gap: 18px; }
+@media (min-width: 520px) { .panel { padding: 28px; } }
+.seg { display: inline-flex; padding: 4px; gap: 4px; background: var(--band); border: 1px solid var(--line); border-radius: 999px; }
+.seg label { margin: 0; cursor: pointer; }
 .seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.seg input:checked + span { color: var(--accent); }
-.seg label:has(input:checked) { background: var(--band); box-shadow: inset 0 -2px 0 var(--accent); }
-.seg label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: -2px; }
-.box { border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-.number { font-size: 1.625rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.seg span { display: inline-block; padding: 7px 18px; border-radius: 999px; font-weight: 700; font-size: .875rem; color: var(--muted); }
+.seg input:checked + span { background: var(--bg); color: var(--accent); box-shadow: var(--card-shadow); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+fieldset { border: 0; margin: 0; padding: 0; }
+legend { font-weight: 700; font-size: .9375rem; padding: 0; margin-bottom: 8px; }
+.dial { background: var(--soft); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.dial-label { font-size: .8125rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.number { font-size: clamp(1.8rem, 8vw, 2.4rem); font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.actions .btn { flex: 1 1 140px; }
-.status { font-size: .9375rem; color: var(--muted); }
+.actions .btn { flex: 1 1 150px; }
+.status { font-size: .875rem; color: var(--muted); }
 .status:empty { display: none; }
-.cols { display: grid; grid-template-columns: 1fr; gap: 12px; }
-.cols ul { padding-left: 1.1em; }
-.cols li { margin-top: 2px; }
-.note { border: 1px solid var(--line); border-radius: 4px; padding: 10px 12px; font-size: .9375rem; }
-.info { display: flex; flex-direction: column; gap: 8px; }
-.info ul { padding-left: 1.1em; }
-.info li { margin-top: 2px; }
-footer { border-top: 1px solid var(--line); }
-footer .wrap { padding-top: 14px; padding-bottom: 20px; color: var(--muted); font-size: .875rem; }
+.cando h3 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+.cando + .cando { margin-top: 16px; }
+.cando li { margin-top: 4px; color: var(--muted); }
+.beta-line { font-size: .875rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* Footer */
+footer { background: var(--foot-bg); color: var(--foot-ink); }
+footer .wrap { padding-top: 40px; padding-bottom: 28px; display: grid; gap: 26px; }
+@media (min-width: 760px) { footer .wrap { grid-template-columns: 1.4fr 1fr 1fr; } }
+footer .brand { color: #FFFFFF; }
+footer p, footer li { color: var(--foot-muted); font-size: .9375rem; }
+footer h4 { margin: 0 0 10px; font-size: .8125rem; letter-spacing: .06em; text-transform: uppercase; color: var(--foot-ink); }
+footer ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.legal { grid-column: 1 / -1; border-top: 1px solid #3A322B; padding-top: 18px; font-size: .8125rem; color: var(--foot-muted); }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
-<header>
+<div class="strip" id="strip">Onestop Line is in beta. Terry is new and can make mistakes, so double check the Onestop when it matters.</div>
+
+<header class="site">
   <div class="wrap">
-    <span class="wordmark">Onestop Line</span>
-    <span id="signed-short" class="signed" hidden></span>
+    <a class="brand" href="#top" id="top-link">
+      <span class="mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+      </span>
+      Onestop Line
+    </a>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#features">What Terry does</a>
+      <a href="#soon">Coming soon</a>
+    </nav>
+    <div class="head-right">
+      <span id="signed-short" class="signed" hidden></span>
+      <a class="btn btn-primary btn-sm" href="#signin-card" id="head-cta">Sign in</a>
+      <button type="button" class="btn btn-outline btn-sm" id="signout" hidden>Sign out</button>
+    </div>
   </div>
 </header>
 
-<main>
-  <div class="wrap" id="signin">
-    <p class="note"><strong>Beta.</strong> Terry is new and can make mistakes. When in doubt, check the Onestop.</p>
-    <div class="who">
-      <span id="avatar-small"></span>
-      <div>
-        <h1 id="signin-title" tabindex="-1">Sign in to reach Terry</h1>
-        <p class="muted small">Terry is a phone assistant that reads the Onestop schedule.</p>
-      </div>
-    </div>
-    <form id="signin-form" novalidate>
-      <label for="email">Church email</label>
-      <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="name@acts2.network" aria-describedby="email-error">
-      <p class="error" id="email-error" aria-live="polite"></p>
-      <button type="submit" class="btn btn-primary">Continue</button>
-    </form>
+<main id="top">
+  <!-- Signed out -->
+  <div id="signin">
+    <section class="hero">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>For acts2.network members</span>
+          <h1>Your week at church, <em>one phone call</em> away.</h1>
+          <p class="lede">Call Terry, our phone assistant, and hear what you're scheduled for this week, straight from the Onestop. No digging through tabs.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#signin-card">Get Terry's number</a>
+            <a class="btn btn-outline" href="#how">See how it works</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>7 days</b><span>of detail, Monday to Sunday</span></div>
+            <div class="stat"><b>Nightly</b><span>refresh from the Onestop</span></div>
+            <div class="stat"><b>Read-only</b><span>Terry never changes the sheet</span></div>
+          </div>
+        </div>
 
-    <section class="info" aria-labelledby="does-title">
-      <h2 id="does-title">What Onestop Line does</h2>
-      <ul>
-        <li>Call Terry, our phone assistant, to hear what you're scheduled for this week.</li>
-        <li>Ask what's on the church calendar for upcoming dates.</li>
-        <li>Find out who's leading an event.</li>
-      </ul>
-      <p class="muted small">Terry only reads the Onestop. It can't change anything.</p>
+        <div class="card signin-card" id="signin-card">
+          <div class="who">
+            <span id="avatar-small"></span>
+            <div>
+              <h2 id="signin-title" tabindex="-1">Sign in to reach Terry</h2>
+              <p class="fine">Use your church email to see the number.</p>
+            </div>
+          </div>
+          <form id="signin-form" novalidate>
+            <label for="email">Church email</label>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="name@acts2.network" aria-describedby="email-error">
+            <p class="error" id="email-error" aria-live="polite"></p>
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </form>
+          <p class="fine">Only acts2.network addresses can sign in.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="info" aria-labelledby="soon-title-a">
-      <h2 id="soon-title-a">Coming soon</h2>
-      <ul>
-        <li>Text Terry by SMS.</li>
-      </ul>
+    <section class="band alt" id="features">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>What Terry does</span>
+          <h2>Ask the way you'd ask a friend.</h2>
+          <p>Give Terry your first and last name and it finds the parts of the Onestop that are yours.</p>
+        </div>
+        <div class="grid4">
+          <div class="card feature">
+            <span class="ficon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>
+            <h3>Your week</h3>
+            <p>What you're leading or helping with, day by day, with times and places.</p>
+          </div>
+          <div class="card feature">
+            <span class="ficon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></span>
+            <h3>Church calendar</h3>
+            <p>What's coming up on future dates, from retreats to Sabbath weeks.</p>
+          </div>
+          <div class="card feature">
+            <span class="ficon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+            <h3>Who's leading</h3>
+            <p>Find out who's in charge of an event so you know who to ask.</p>
+          </div>
+          <div class="card feature">
+            <span class="ficon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/></svg></span>
+            <h3>Private by design</h3>
+            <p>Read-only, and it never shares childcare details or anyone's full week.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="how">
+      <div class="wrap split">
+        <div>
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>How it works</span>
+          <div class="sec-head" style="margin-bottom:0">
+            <h2>Call, say your name, and ask.</h2>
+            <p>Terry reads a fresh copy of the Onestop every night, so answers match the sheet as of that morning.</p>
+          </div>
+          <ul class="checks">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Sign in with your church email to get the number.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Tell Terry your first and last name.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg><span>Ask about today, tomorrow, or the week.</span></li>
+          </ul>
+        </div>
+        <div class="phone" aria-label="Example call with Terry" role="img">
+          <div class="screen">
+            <div class="callhead">
+              <span id="avatar-call"></span>
+              <div><b>Terry</b><span>Onestop Line</span></div>
+            </div>
+            <p class="msg terry">Hi, this is Terry. Can I get your first and last name?</p>
+            <p class="msg me">Sam Park. What do I have this week?</p>
+            <p class="msg terry">You're helping with lunch prep Wednesday at eleven fifteen at Denby, and you're on Sunday setup. Want the rest?</p>
+            <p class="msg me">Can you move my Sunday shift?</p>
+            <p class="msg terry">I can't change the Onestop, but I can tell you who's leading Sunday setup so you can ask them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band alt" id="soon">
+      <div class="wrap">
+        <div class="card soon">
+          <div>
+            <span class="tag">Coming soon</span>
+            <h3 style="margin-top:10px">Text Terry by SMS</h3>
+            <p>Ask the same questions by text instead of a call.</p>
+          </div>
+          <a class="btn btn-primary" href="#signin-card">Get Terry's number</a>
+        </div>
+        <div class="trust" aria-label="Good to know">
+          <span>Read-only</span>
+          <span>acts2.network sign-in</span>
+          <span>No childcare details</span>
+          <span>Refreshed nightly</span>
+          <span>Beta</span>
+        </div>
+      </div>
     </section>
   </div>
 
-  <div class="wrap" id="inside" hidden>
-    <p class="signed"><span id="signed-as"></span> <button type="button" class="linkbtn" id="signout">Sign out</button></p>
-    <p class="note"><strong>Beta.</strong> Terry is new and can make mistakes. When in doubt, check the Onestop.</p>
+  <!-- Signed in -->
+  <div id="inside" class="inside" hidden>
+    <div class="wrap">
+      <div class="card panel">
+        <div class="who">
+          <span id="avatar-large"></span>
+          <div>
+            <h1 id="inside-title" tabindex="-1" style="font-size:1.6rem;font-weight:800;letter-spacing:-.02em">Terry</h1>
+            <p class="fine" id="signed-as"></p>
+          </div>
+        </div>
+        <fieldset>
+          <legend>Your profile</legend>
+          <div class="seg">
+            <label><input type="radio" name="profile" value="member" checked><span>Member</span></label>
+            <label><input type="radio" name="profile" value="admin"><span>Admin</span></label>
+          </div>
+        </fieldset>
+        <p id="profile-text"></p>
+        <div class="dial" id="dial"></div>
+      </div>
 
-    <div class="who">
-      <span id="avatar-large"></span>
-      <div>
-        <h1 id="inside-title" tabindex="-1">Terry</h1>
-        <p class="muted small">Voice assistant for the Onestop</p>
+      <div class="card panel" aria-labelledby="cc-title">
+        <h2 id="cc-title" style="font-size:1.25rem;font-weight:800;letter-spacing:-.01em">What Terry can and can't do</h2>
+        <div>
+          <div class="cando">
+            <h3>Can</h3>
+            <ul>
+              <li>Tell you what you're scheduled for this week, by your first and last name.</li>
+              <li>Tell you what's on the church calendar for upcoming dates.</li>
+              <li>Tell you who's leading an event.</li>
+            </ul>
+          </div>
+          <div class="cando">
+            <h3>Can't</h3>
+            <ul>
+              <li>Change, add, or delete anything on the Onestop.</li>
+              <li>Tell you who's serving in future weeks. Only the current week's details are loaded.</li>
+              <li>Share anything about childcare.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="beta-line"><span class="tag">Coming soon</span>&nbsp; Text Terry by SMS.</p>
+        <p class="beta-line" style="border-top:0;padding-top:0">Terry is in beta and can make mistakes. When in doubt, check the Onestop.</p>
       </div>
     </div>
-
-    <fieldset>
-      <legend>Your profile</legend>
-      <div class="seg">
-        <label><input type="radio" name="profile" value="member" checked><span>Member</span></label>
-        <label><input type="radio" name="profile" value="admin"><span>Admin</span></label>
-      </div>
-    </fieldset>
-
-    <p id="profile-text"></p>
-
-    <div class="box" id="dial"></div>
-
-    <section class="cols" aria-labelledby="cc-title">
-      <h2 id="cc-title">What Terry can and can't do</h2>
-      <div>
-        <p><strong>Can</strong></p>
-        <ul>
-          <li>Tell you what you're scheduled for this week, by your first and last name.</li>
-          <li>Tell you what's on the church calendar for upcoming dates.</li>
-          <li>Tell you who's leading an event.</li>
-        </ul>
-      </div>
-      <div>
-        <p><strong>Can't</strong></p>
-        <ul>
-          <li>Change, add, or delete anything on the Onestop.</li>
-          <li>Tell you who's serving in future weeks. Only the current week's details are loaded.</li>
-          <li>Share anything about childcare.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="info" aria-labelledby="soon-title-b">
-      <h2 id="soon-title-b">Coming soon</h2>
-      <ul>
-        <li>Text Terry by SMS.</li>
-      </ul>
-    </section>
   </div>
 </main>
 
 <footer>
-  <div class="wrap">Onestop Line. For church members in Boston.</div>
+  <div class="wrap">
+    <div>
+      <span class="brand"><span class="mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>Onestop Line</span>
+      <p style="margin-top:10px;max-width:30em">A read-only phone assistant for the Onestop, for church members in Boston.</p>
+    </div>
+    <div>
+      <h4>Terry</h4>
+      <ul><li>Your week</li><li>Church calendar</li><li>Who's leading</li></ul>
+    </div>
+    <div>
+      <h4>Good to know</h4>
+      <ul><li>Beta</li><li>Read-only</li><li>SMS coming soon</li></ul>
+    </div>
+    <p class="legal">Onestop Line. For acts2.network members.</p>
+  </div>
 </footer>
 
 <script>
 (function () {
-  var AVATAR = '<svg viewBox="0 0 80 80" role="img" aria-label="Illustration of Terry">' +
-    '<circle cx="40" cy="40" r="40" fill="var(--av-bg)"/>' +
-    '<path d="M14 80c2-14 13-21 26-21s24 7 26 21z" fill="#7C8794"/>' +
-    '<path d="M33 52h14v9c0 4-14 4-14 0z" fill="#E2B48E"/>' +
-    '<ellipse cx="40" cy="38" rx="15" ry="17" fill="#EBC29E"/>' +
-    '<ellipse cx="25" cy="39" rx="2.6" ry="4" fill="#E2B48E"/><ellipse cx="55" cy="39" rx="2.6" ry="4" fill="#E2B48E"/>' +
-    '<path d="M24 35c-1-12 6-19 16-19s18 6 16 19c-2-5-5-8-9-9-5 3-14 4-21 3-1 2-2 4-2 6z" fill="#1E1B1A"/>' +
-    '<g fill="none" stroke="#2B2F36" stroke-width="1.8"><rect x="28" y="35" width="10" height="7" rx="2"/><rect x="42" y="35" width="10" height="7" rx="2"/><path d="M38 38h4M28 37l-3-1M52 37l3-1"/></g>' +
-    '<circle cx="33" cy="38.5" r="1.3" fill="#2B2F36"/><circle cx="47" cy="38.5" r="1.3" fill="#2B2F36"/>' +
-    '<path d="M35 47c3 2.5 7 2.5 10 0" fill="none" stroke="#9A5B45" stroke-width="1.8" stroke-linecap="round"/>' +
-    '</svg>';
-  document.getElementById('avatar-large').innerHTML = AVATAR;
-  document.getElementById('avatar-small').innerHTML = AVATAR.replace('role="img" aria-label="Illustration of Terry"', 'aria-hidden="true"');
-  document.querySelector('#avatar-small svg').style.cssText = 'width:56px;height:56px;border-radius:50%';
+  var AVATAR = function (size, label) {
+    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 80 80" ' + (label ? 'role="img" aria-label="Illustration of Terry"' : 'aria-hidden="true"') + '>' +
+      '<circle cx="40" cy="40" r="40" fill="var(--av-bg)"/>' +
+      '<path d="M14 80c2-14 13-21 26-21s24 7 26 21z" fill="#7C8794"/>' +
+      '<path d="M33 52h14v9c0 4-14 4-14 0z" fill="#E2B48E"/>' +
+      '<ellipse cx="40" cy="38" rx="15" ry="17" fill="#EBC29E"/>' +
+      '<ellipse cx="25" cy="39" rx="2.6" ry="4" fill="#E2B48E"/><ellipse cx="55" cy="39" rx="2.6" ry="4" fill="#E2B48E"/>' +
+      '<path d="M24 35c-1-12 6-19 16-19s18 6 16 19c-2-5-5-8-9-9-5 3-14 4-21 3-1 2-2 4-2 6z" fill="#1E1B1A"/>' +
+      '<g fill="none" stroke="#2B2F36" stroke-width="1.8"><rect x="28" y="35" width="10" height="7" rx="2"/><rect x="42" y="35" width="10" height="7" rx="2"/><path d="M38 38h4M28 37l-3-1M52 37l3-1"/></g>' +
+      '<circle cx="33" cy="38.5" r="1.3" fill="#2B2F36"/><circle cx="47" cy="38.5" r="1.3" fill="#2B2F36"/>' +
+      '<path d="M35 47c3 2.5 7 2.5 10 0" fill="none" stroke="#9A5B45" stroke-width="1.8" stroke-linecap="round"/>' +
+      '</svg>';
+  };
+  document.getElementById('avatar-small').innerHTML = AVATAR(56, false);
+  document.getElementById('avatar-call').innerHTML = AVATAR(38, false);
+  document.getElementById('avatar-large').innerHTML = AVATAR(80, true);
 
   var TEXT = {
     member: 'Call Terry to ask what is on your schedule. For example: "What am I scheduled for this week?"',
@@ -235,12 +459,15 @@ footer .wrap { padding-top: 14px; padding-bottom: 20px; color: var(--muted); fon
   var err = document.getElementById('email-error');
   var dial = document.getElementById('dial');
   var profileText = document.getElementById('profile-text');
+  var headCta = document.getElementById('head-cta');
+  var signoutBtn = document.getElementById('signout');
+  var signedShort = document.getElementById('signed-short');
+  var nav = document.getElementById('nav');
 
   function isAllowed(v) {
     var s = String(v || '').trim().toLowerCase();
     return /^[^\s@]+@acts2\.network$/.test(s);
   }
-  window.__isAllowed = isAllowed;
 
   // Assembled only after sign-in so the number is not in the page before then.
   function line() {
@@ -258,7 +485,7 @@ footer .wrap { padding-top: 14px; padding-bottom: 20px; color: var(--muted); fon
   function buildDial() {
     var n = line();
     dial.textContent = '';
-    dial.appendChild(el('span', 'muted small', "Terry's number"));
+    dial.appendChild(el('span', 'dial-label', "Terry's number"));
     var num = el('div', 'number', n.shown);
     dial.appendChild(num);
     var actions = el('div', 'actions');
@@ -306,6 +533,11 @@ footer .wrap { padding-top: 14px; padding-bottom: 20px; color: var(--muted); fon
     err.textContent = '';
     email.removeAttribute('aria-invalid');
     document.getElementById('signed-as').textContent = 'Signed in as ' + v.toLowerCase();
+    signedShort.textContent = v.toLowerCase();
+    signedShort.hidden = false;
+    headCta.hidden = true;
+    nav.hidden = true;
+    signoutBtn.hidden = false;
     document.querySelector('input[name="profile"][value="member"]').checked = true;
     setProfile('member');
     buildDial();
@@ -315,13 +547,19 @@ footer .wrap { padding-top: 14px; padding-bottom: 20px; color: var(--muted); fon
     document.getElementById('inside-title').focus({ preventScroll: true });
   });
 
-  document.getElementById('signout').addEventListener('click', function () {
+  signoutBtn.addEventListener('click', function () {
     dial.textContent = '';
     document.getElementById('signed-as').textContent = '';
+    signedShort.textContent = '';
+    signedShort.hidden = true;
+    headCta.hidden = false;
+    nav.hidden = false;
+    signoutBtn.hidden = true;
     email.value = '';
     inside.hidden = true;
     signin.hidden = false;
-    document.getElementById('signin-title').focus();
+    window.scrollTo(0, 0);
+    document.getElementById('signin-title').focus({ preventScroll: true });
   });
 })();
 </script>
