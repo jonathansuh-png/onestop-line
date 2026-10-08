@@ -1,0 +1,6 @@
+*.xlsx
+*.csv
+out_*.txt
+instructions*.txt
+data/
+.DS_Store
